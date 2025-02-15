@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CubeManager : MonoBehaviour
+public class CubeBehavior : MonoBehaviour
 {
     [SerializeField] private MouseKeyReader _mouseKeyReader;
     [SerializeField] private Spawner _spawner;
@@ -20,23 +20,25 @@ public class CubeManager : MonoBehaviour
     {
         int divisor = 2;
 
-        if (TryToSpawn(cube.ChanceTreshold))
-            _detonator.Explode(_spawner.Spawn(cube, GetNewCubeScale(cube.transform.localScale, divisor), GetNewChanceTreshold(cube.ChanceTreshold, divisor)), cube.transform.position);
+        if (TrySpawn(cube.ChanceTreshold))
+            _detonator.Explode(_spawner.Spawn(cube, GetTramsform(cube.transform, divisor), GetChance(cube.ChanceTreshold, divisor)), cube.transform.position);
 
         Destroy(cube.gameObject);
     }
 
-    private float GetNewChanceTreshold(float chanceTreshold, int divisor)
+    private float GetChance(float chanceTreshold, int divisor)
     {
         return chanceTreshold / divisor;
     }
 
-    private Vector3 GetNewCubeScale(Vector3 oldCubeScale, int divisor)
+    private Transform GetTramsform(Transform cubeTransform, int divisor)
     {
-        return oldCubeScale / divisor;
+        cubeTransform.localScale /= divisor;
+
+        return cubeTransform;
     }
 
-    private bool TryToSpawn(float chanceTreshold)
+    private bool TrySpawn(float chanceTreshold)
     {
         int minNumberOfChance = 0;
         int maxNumberOfChance = 100;

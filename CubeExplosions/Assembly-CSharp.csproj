@@ -61,8 +61,8 @@
     <Analyzer Include="D:\unity\6000.0.38f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CubeManager.cs" />
     <Compile Include="Assets\Scripts\Detonator.cs" />
+    <Compile Include="Assets\Scripts\CubeBehavior.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\MouseKeyReader.cs" />
     <Compile Include="Assets\Scripts\Cube.cs" />
