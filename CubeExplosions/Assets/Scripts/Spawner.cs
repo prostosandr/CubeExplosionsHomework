@@ -3,22 +3,22 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] int minNumberOfCube;
-    [SerializeField] int maxNumberOfCube;
+    [SerializeField] private int _minNumberOfCube;
+    [SerializeField] private int _maxNumberOfCube;
 
-    public List<Rigidbody> Spawn(Cube oldCube)
+    public List<Rigidbody> Spawn(Cube oldCube, Vector3 cubeScale, float chanceTreshold)
     {
         List<Rigidbody> spawnList = new List<Rigidbody>();
 
-        for (int i = 0; i < Random.Range(minNumberOfCube, maxNumberOfCube); i++)
+        for (int i = 0; i < Random.Range(_minNumberOfCube, _maxNumberOfCube); i++)
         {
-            GameObject newGameObjectCube = Instantiate(oldCube.gameObject, oldCube.gameObject.transform.position, oldCube.gameObject.transform.rotation);
+            Cube newCube = Instantiate(oldCube, oldCube.transform.position, oldCube.transform.rotation);
+            newCube.transform.localScale = cubeScale;
+            newCube.SetChanceTreshold(chanceTreshold);
 
-            if (newGameObjectCube.TryGetComponent(out Rigidbody rigidbody) && newGameObjectCube.TryGetComponent(out Cube cube))
+            if (newCube.TryGetComponent(out Rigidbody rigidbody))
             {
                 spawnList.Add(rigidbody);
-
-                cube.DecreaseChanceAndScale();
             }
         }
 

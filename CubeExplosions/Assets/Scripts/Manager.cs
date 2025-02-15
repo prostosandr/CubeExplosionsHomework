@@ -18,10 +18,22 @@ public class Manager : MonoBehaviour
 
     private void Work(Cube cube)
     {
+        int divisor = 2;
+
         if (GetSpawnChance(cube))
-            _detonator.Explode(_spawner.Spawn(cube), cube.transform.position);
+            _detonator.Explode(_spawner.Spawn(cube, GetNewCubeScale(cube, divisor), GetNewChanceTreshold(cube, divisor)), cube.transform.position);
 
         Destroy(cube.gameObject);
+    }
+
+    private float GetNewChanceTreshold(Cube cube, int divisor)
+    {
+        return cube.ChanceTreshold / divisor;
+    }
+
+    private Vector3 GetNewCubeScale(Cube cube, int divisor)
+    {
+        return cube.transform.localScale / divisor;
     }
 
     private bool GetSpawnChance(Cube cube)

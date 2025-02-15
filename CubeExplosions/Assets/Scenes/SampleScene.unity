@@ -970,6 +970,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4873d410516b444bec650edeffe58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minNumberOfCube: 2
+  _maxNumberOfCube: 6
 --- !u!114 &1038897886
 MonoBehaviour:
   m_ObjectHideFlags: 0

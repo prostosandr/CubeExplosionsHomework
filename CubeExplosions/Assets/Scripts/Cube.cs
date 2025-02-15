@@ -13,13 +13,9 @@ public class Cube : MonoBehaviour
         ChangeColor();
     }
 
-    public void DecreaseChanceAndScale()
+    public void SetChanceTreshold(float newChanceTreshold)
     {
-        int divisor = 2;
-
-        _chanceTreshold /= divisor;
-
-        transform.localScale /= divisor;
+        _chanceTreshold = newChanceTreshold;
     }
 
     private void ChangeColor()
