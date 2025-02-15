@@ -6,10 +6,14 @@ public class Cube : MonoBehaviour
 {
     [SerializeField] private float _chanceTreshold;
 
+    private Renderer _renderer;
+
     public float ChanceTreshold => _chanceTreshold;
 
     private void Awake()
     {
+        _renderer = GetComponent<Renderer>();
+
         ChangeColor();
     }
 
@@ -20,6 +24,6 @@ public class Cube : MonoBehaviour
 
     private void ChangeColor()
     {
-        GetComponent<Renderer>().material.color = new Color(Random.value, Random.value, Random.value);
+        _renderer.material.color = new Color(Random.value, Random.value, Random.value);
     }
 }
